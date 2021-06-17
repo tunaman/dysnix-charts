@@ -53,6 +53,12 @@ spec:
               mountPath: /root/.ssh
               readOnly: true
             {{- end }}
+            {{- if .Values.flowProvider.git.config.enabled }}
+            - name: git-config
+              mountPath: /root/.gitconfig
+              subPath: gitconfig
+              readOnly: true
+            {{- end }}
             - name: git-key
               mountPath: /ssh
               readOnly: true
